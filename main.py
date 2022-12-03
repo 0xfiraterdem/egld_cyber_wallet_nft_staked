@@ -44,10 +44,11 @@ for wallet in url:
                     data4 = requests.post(post_url,json={
                                                 "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                                                 "funcName": "getUserPoolScore", "args": [f"{hex_wallet}"]})
-                    sett =int(int(base64.b64decode(data4.json()['returnData'][0]).hex(),16)-(int(base64.b64decode(data3.json()['returnData'][0]).hex(),16))/7)
+                    sett =(int(base64.b64decode(data4.json()['returnData'][0]).hex(),16)-(int(base64.b64decode(data3.json()['returnData'][0]).hex(),16)))/7
+                    sett = int(sett)
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{sett}"})
                     time.sleep(1)
-
+                    pass
                 else:
                     balance = []
                     for elmn in balance_stake:
@@ -66,9 +67,10 @@ for wallet in url:
                         except:
                             veri2= 0
                         balance.append(veri1+veri2)
+                    print(balance, wallet['sender'])
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
                     time.sleep(1)
-
+                    pass
         else:
             balance_stake.extend(wallet_balance_nft.wallet_balance(wallet['sender']))
             balance_stake = list(set(balance_stake))
@@ -91,7 +93,7 @@ for wallet in url:
                         balance.append(veri)
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
                     time.sleep(1)
-
+                    pass
                 else:
                     balance = []
                     for elmn in balance_stake:
@@ -113,11 +115,15 @@ for wallet in url:
                         if veri3 is not None:
                             veri = veri1+veri2+int(veri3)
                         balance.append(veri1 + veri2)
+                    print(balance, wallet['sender'])
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
                     time.sleep(1)
+                    pass
+
 
         time.sleep(0.6)
-
+        i+=1
+        print(i)
 
 if len(wallet_balance_nft.wallets_14nfts())!=0:
     balance=[]
