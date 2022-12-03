@@ -48,7 +48,6 @@ for wallet in url:
                     sett = int(sett)
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{sett}"})
                     time.sleep(1)
-                    pass
                 else:
                     balance = []
                     for elmn in balance_stake:
@@ -70,7 +69,7 @@ for wallet in url:
                     print(balance, wallet['sender'])
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
                     time.sleep(1)
-                    pass
+
         else:
             balance_stake.extend(wallet_balance_nft.wallet_balance(wallet['sender']))
             balance_stake = list(set(balance_stake))
@@ -93,7 +92,7 @@ for wallet in url:
                         balance.append(veri)
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
                     time.sleep(1)
-                    pass
+
                 else:
                     balance = []
                     for elmn in balance_stake:
@@ -118,8 +117,6 @@ for wallet in url:
                     print(balance, wallet['sender'])
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
                     time.sleep(1)
-                    pass
-
 
         time.sleep(0.6)
         i+=1
