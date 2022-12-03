@@ -12,7 +12,6 @@ url = requests.get(url).json()
 stake_wallet = []
 snapshot=[]
 wallets=wallet_balance_nft.wallets()
-i=0
 for wallet in url:
     if wallet['sender'] not in stake_wallet:
         stake_wallet.append(wallet['sender'])
@@ -45,16 +44,14 @@ for wallet in url:
                 balance_stake = list(set(balance_stake))
                 if len(balance_stake)==14:
                     snapshot.append(balance_stake)
-        i+=1
-        print(i)
         time.sleep(0.6)
 
 if len(wallet_balance_nft.wallets_14nfts())!=0:
     for addr in wallet_balance_nft.wallets_14nfts():
         if addr not in snapshot:
             snapshot.append(addr)
-snapshot= open("snapshot.txt", "w")
-snapshot.write(f'{snapshot}')
-snapshot= open("snapshot.txt", "r")
-print(snapshot.read())
+ss= open("snapshot.txt", "w")
+ss.write(f'{snapshot}')
+ss= open("snapshot.txt", "r")
+print(ss.read())
 
