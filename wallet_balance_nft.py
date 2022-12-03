@@ -68,9 +68,3 @@ def wallet_per_nft_balance(wallet,hex):
         if 'erd1qqqqqqq' not in addr['address']:
             if wallet in addr['address']:
                 return addr['balance']
-
-
-
-
-
-
