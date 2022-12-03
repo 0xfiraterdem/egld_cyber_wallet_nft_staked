@@ -58,6 +58,18 @@ def wallets_14nfts():
                 list_14nft.append(addr['address'])
     return list_14nft
 
+def wallet_per_nft_balance(wallet,hex):
+    indx=int(hex,16)-1
+    url = nft_url[indx]
+    url = requests.get(url)
+    url = url.json()
+    time.sleep(0.1)
+    for addr in url:
+        if 'erd1qqqqqqq' not in addr['address']:
+            if wallet in addr['address']:
+                return addr['balance']
+
+
 
 
 
