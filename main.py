@@ -65,7 +65,6 @@ for wallet in url:
                         except:
                             veri2= 0
                         balance.append(veri1+veri2)
-                    print(balance, wallet['sender'])
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
                     time.sleep(1)
 
