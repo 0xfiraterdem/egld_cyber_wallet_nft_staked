@@ -73,7 +73,7 @@ if len(wallet_balance_nft.wallets_14nfts())!=0:
                     veri = wallet_balance_nft.wallet_per_nft_balance(addr, i)
                     balance.append(veri)
                 snapshot.append({"address" : f"{addr}", "set" : f"{min(balance)}"})
-                time.sleep(0.6)
+        time.sleep(0.6)
 print(len(snapshot))
 ss= open("snapshot.txt", "w")
 ss.write(f'{snapshot}')
