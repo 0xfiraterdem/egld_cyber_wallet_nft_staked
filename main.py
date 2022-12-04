@@ -47,13 +47,13 @@ for wallet in url:
                     sett =(int(base64.b64decode(data4.json()['returnData'][0]).hex(),16)-(int(base64.b64decode(data3.json()['returnData'][0]).hex(),16)))/7
                     sett = int(sett)
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{sett}"})
-                    time.sleep(1)
                 else:
                     balance = []
                     for elmn in balance_stake:
                         data5 = requests.post(post_url, json={
                             "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                             "funcName": "getUserStakedAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
+                        time.sleep(1)
                         data6 = requests.post(post_url, json={
                             "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                             "funcName": "getUserUnbondingAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
@@ -68,7 +68,7 @@ for wallet in url:
                         balance.append(veri1+veri2)
                     print(balance, wallet['sender'])
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
-                    time.sleep(1)
+
 
         else:
             balance_stake.extend(wallet_balance_nft.wallet_balance(wallet['sender']))
@@ -91,7 +91,6 @@ for wallet in url:
                             veri = veri1
                         balance.append(veri)
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
-                    time.sleep(1)
 
                 else:
                     balance = []
@@ -99,6 +98,7 @@ for wallet in url:
                         data5 = requests.post(post_url, json={
                             "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                             "funcName": "getUserStakedAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
+                        time.sleep(1)
                         data6 = requests.post(post_url, json={
                             "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                             "funcName": "getUserUnbondingAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
@@ -116,11 +116,11 @@ for wallet in url:
                         balance.append(veri1 + veri2)
                     print(balance, wallet['sender'])
                     snapshot.append({"address": f"{wallet['sender']}", "set": f"{min(balance)}"})
-                    time.sleep(1)
 
-        time.sleep(0.6)
         i+=1
         print(i)
+        time.sleep(0.6)
+
 
 if len(wallet_balance_nft.wallets_14nfts())!=0:
     balance=[]
@@ -131,7 +131,6 @@ if len(wallet_balance_nft.wallets_14nfts())!=0:
                     veri = wallet_balance_nft.wallet_per_nft_balance(addr, i)
                     balance.append(veri)
                 snapshot.append({"address" : f"{addr}", "set" : f"{min(balance)}"})
-        time.sleep(0.6)
 print(len(snapshot))
 ss= open("snapshot.txt", "w")
 ss.write(f'{snapshot}')
