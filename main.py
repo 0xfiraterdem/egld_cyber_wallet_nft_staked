@@ -55,12 +55,12 @@ for wallet in url:
                     if len(balance_stake)==14:
                         balance=[]
                         for indx in range(0, len(balance_stake)):
-                            time.sleep(0.5)
+                            time.sleep(0.25)
                             elmn = base64.b64decode(balance_stake[indx]).hex()
                             data5 = requests.post(post_url, json={
                                 "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                                 "funcName": "getUserStakedAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
-                            time.sleep(0.5)
+                            time.sleep(0.25)
                             data6 = requests.post(post_url, json={
                                 "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                                 "funcName": "getUserUnbondingAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
@@ -80,7 +80,7 @@ for wallet in url:
                     if len(balance_unbonding)==14:
                         balance=[]
                         for indx in range(0, len(balance_unbonding)):
-                            time.sleep(0.5)
+                            time.sleep(0.25)
                             elmn = base64.b64decode(balance_unbonding[indx]).hex()
                             data6 = requests.post(post_url, json={
                                 "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
@@ -99,7 +99,7 @@ for wallet in url:
                     if len(balance_stake) == 14:
                         balance = []
                         for elmn in balance_stake:
-                            time.sleep(0.5)
+                            time.sleep(0.25)
                             data7 = requests.post(post_url, json={"scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz","funcName": "getUserStakedAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
                             try:
                                 veri1 = int(base64.b64decode(data7.json()['returnData'][0]).hex(), 16)
@@ -123,11 +123,11 @@ for wallet in url:
                     if len(balance_stake) == 14:
                         balance = []
                         for elmn in balance_stake:
-                            time.sleep(0.5)
+                            time.sleep(0.25)
                             data5 = requests.post(post_url, json={
                                 "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                                 "funcName": "getUserStakedAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
-                            time.sleep(0.5)
+                            time.sleep(0.25)
                             data6 = requests.post(post_url, json={
                                 "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                                 "funcName": "getUserUnbondingAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
@@ -139,7 +139,7 @@ for wallet in url:
                                 veri2 = int(base64.b64decode(data6.json()['returnData'][0]).hex(), 16)
                             except:
                                 veri2 = 0
-                            time.sleep(0.5)
+                            time.sleep(0.25)
                             veri3 = wallet_balance_nft.wallet_per_nft_balance(wallet['sender'], elmn)
                             if veri3 is not None:
                                 veri = veri1 + veri2 + int(veri3)
@@ -158,7 +158,7 @@ for wallet in url:
                         if len(balance_unbonding) == 14:
                             balance = []
                             for elmn in balance_unbonding:
-                                time.sleep(0.5)
+                                time.sleep(0.25)
                                 data7 = requests.post(post_url, json={
                                     "scAddress": "erd1qqqqqqqqqqqqqpgqsu2vxxx5l3tjgcnjl6mftlz5dtz5cp5s398syqw3gz",
                                     "funcName": "getUserStakedAmountPerNonce", "args": [f"{hex_wallet}", f"{elmn}"]})
@@ -166,7 +166,7 @@ for wallet in url:
                                     veri1 = int(base64.b64decode(data7.json()['returnData'][0]).hex(), 16)
                                 except:
                                     veri1 = 0
-                                time.sleep(0.5)
+                                time.sleep(0.25)
                                 veri2 = wallet_balance_nft.wallet_per_nft_balance(wallet['sender'], elmn)
                                 if veri2 is not None:
                                     veri = veri1 + int(veri2)
