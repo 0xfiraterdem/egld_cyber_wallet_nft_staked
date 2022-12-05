@@ -38,7 +38,7 @@ def wallet_balance(wallet):
     liste=[]
     for i in range(0, nft_sayi):
         url = nft_url[i]
-        time.sleep(0.5)
+        time.sleep(0.25)
         url = requests.get(url)
         url = url.json()
         hex_i=hex(i+1)[0:3:2]
@@ -56,18 +56,17 @@ def wallets_14nfts():
         balance = []
         if 'erd1qqqqqqq' not in addr['address']:
             balance.append(addr['address'])
-            balance.append(addr['balance'])
+            balance.append(int(addr['balance']))
             for i in range(1,nft_sayi):
                 url = nft_url[i]
                 url = requests.get(url)
                 url = url.json()
                 for i in url:
                     if addr['address'] in i['address']:
-                        balance.append(i['balance'])
+                        balance.append(int(i['balance']))
             if len(balance)==15:
-                print(balance)
                 list_14nft.append(balance)
-            return list_14nft
+    return list_14nft
 
 
 def wallet_per_nft_balance(wallet,hex):
