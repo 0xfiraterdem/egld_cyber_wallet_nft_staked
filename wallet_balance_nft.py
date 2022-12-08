@@ -58,6 +58,7 @@ def wallets_14nfts():
             balance.append(addr['address'])
             balance.append(int(addr['balance']))
             for i in range(1,nft_sayi):
+                time.sleep(0.3)
                 url = nft_url[i]
                 url = requests.get(url)
                 url = url.json()
