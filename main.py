@@ -187,7 +187,6 @@ for wallet in stake_wallet:
     print(f"{i} ", datetime.datetime.now() - start)
 print(len(snapshot))
 nfts_14 = wallet_balance_nft.wallets_14nfts()
-print(nfts_14, len(nfts_14))
 if len(nfts_14) != 0:
     for addr in nfts_14:
         if addr[0] not in snapshot:
